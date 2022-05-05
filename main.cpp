@@ -56,9 +56,7 @@ public:
     }
     
     T* Release() {
-        T* ptr = Get();
-        uniq_ptr_ = nullptr;
-        return ptr;
+        return exchange(uniq_ptr_, nullptr);
     }
     
     void Reset(T* ptr) {
